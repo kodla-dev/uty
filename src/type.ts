@@ -75,3 +75,8 @@ export interface ObjectLiteral<K> {
  * @template K - The arrow function type.
  */
 export type Return<K extends Arrow> = K extends (...args: List) => infer N ? N : never;
+
+/**
+ * Represents JavaScript's primitive types.
+ */
+export type Primitive = string | number | boolean | null | undefined | symbol | bigint;
