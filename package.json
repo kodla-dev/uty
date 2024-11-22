@@ -1,7 +1,7 @@
 {
   "name": "uty",
   "version": "0.0.0",
-  "description": "Utilities for common tasks",
+  "description": "utilities for common tasks",
   "keywords": [
     "js",
     "utils",
@@ -24,6 +24,9 @@
   "exports": {
     ".": {
       "default": "./src/index.js"
+    },
+    "./is": {
+      "default": "./src/is.js"
     }
   },
   "main": "./src/index.js",
