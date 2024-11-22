@@ -1,0 +1,37 @@
+{
+  "name": "uty",
+  "version": "0.0.0",
+  "description": "Utilities for common tasks",
+  "keywords": [
+    "js",
+    "utils",
+    "helpers"
+  ],
+  "bugs": {
+    "url": "https://github.com/kodla-dev/uty/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kodla-dev/uty.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Kodla",
+    "email": "dev@kodla.net",
+    "url": "https://kodla.net"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.js"
+    }
+  },
+  "main": "./src/index.js",
+  "module": "./src/index.js",
+  "files": [
+    "src"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}
