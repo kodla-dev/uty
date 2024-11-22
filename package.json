@@ -39,13 +39,16 @@
     "lint": "prettier --check . && eslint ."
   },
   "devDependencies": {
-    "@eslint/js": "^9.15.0",
-    "eslint": "^9.15.0",
-    "eslint-config-prettier": "^9.1.0",
-    "globals": "^15.12.0",
-    "prettier": "^3.3.3",
-    "prettier-plugin-organize-imports": "^4.1.0",
-    "prettier-plugin-packagejson": "^2.5.5"
+    "@eslint/js": "9.15.0",
+    "dts-buddy": "^0.5.3",
+    "eslint": "9.15.0",
+    "eslint-config-prettier": "9.1.0",
+    "globals": "15.12.0",
+    "jsdom": "25.0.1",
+    "prettier": "3.3.3",
+    "prettier-plugin-organize-imports": "4.1.0",
+    "prettier-plugin-packagejson": "2.5.5",
+    "vitest": "2.1.5"
   },
   "engines": {
     "node": ">=18"
