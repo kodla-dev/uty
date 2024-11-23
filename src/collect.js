@@ -114,16 +114,16 @@ export function diff(values, type, collect) {
 /**
  * Retrieves a value from an object using a dot-separated key.
  *
- * @param {Object} obj - The object to retrieve the value from.
  * @param {string|string[]} key - The key (dot-separated string or array) for the nested value.
+ * @param {Object} collect - The object to retrieve the value from.
  * @param {*} def - The default value if the key is not found.
  * @returns {*} - The value at the nested key, or the default value if not found.
  */
-export function dot(obj, key, def, p) {
-  p = 0;
+export function dot(key, collect, def) {
+  let p = 0;
   key = key.split ? key.split('.') : key;
-  while (obj && p < key.length) obj = obj[key[p++]];
-  return obj === undefined || p < key.length ? def : obj;
+  while (collect && p < length(key)) collect = collect[key[p++]];
+  return isUndefined(collect) || p < length(key) ? def : collect;
 }
 
 /**
