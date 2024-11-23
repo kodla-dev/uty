@@ -14,6 +14,6 @@ export default [
     },
   },
   {
-    ignores: ['**/test', '**/*.d.ts'],
+    ignores: ['**/test', '**/type', '**/*.d.ts'],
   },
 ];
