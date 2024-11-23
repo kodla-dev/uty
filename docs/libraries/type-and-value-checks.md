@@ -25,7 +25,7 @@ import { isArray, isEmpty } from 'uty/is';
 
 Checks whether the specified value is an array or not. If the value is an array, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isArray(['pear', 'grape', 'cherry', 'lemon']); //=> true
@@ -53,7 +53,7 @@ isArray({
 
 Checks whether the specified value resembles an array or not. It typically checks if the value has a `length` property and if that property holds a numeric value. If these conditions are met, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isArrayLike([1, 2, 3]); //=> true
@@ -87,7 +87,7 @@ isArrayLike(() => {}); //=> false
 
 Checks whether the specified value is an asynchronous function or not. If the value is an asynchronous function, it returns `true`; otherwise, it returns `false`. This function is used to determine whether a function is declared with the `async` keyword.
 
-#### Example
+**Example**
 
 ```js
 isAsync(() => {}); //=> false
@@ -103,7 +103,7 @@ isAsync(async () => {}); //=> true
 
 Checks whether the specified value is an asynchronously iterable or not. If the value is an asynchronously iterable, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isAsyncIterable([1, 2, 3]); //=> false
@@ -123,7 +123,7 @@ isAsyncIterable(toAsync([1, 2, 3])); //=> true
 
 Checks whether the specified value is of the boolean data type or not. If the value is a boolean, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isBoolean(true); //=> true
@@ -149,7 +149,7 @@ isBoolean(null); //=> false
 
 Checks whether the specified value is a class or not. If the value is a class, it returns `true`; otherwise, it returns `false`. This function is used to determine whether a value is a class definition or an instance of a class.
 
-#### Example
+**Example**
 
 ```js
 class Router {
@@ -178,7 +178,7 @@ The result will be `false`.
 
 Checks whether the current environment is a client-side environment or not. If the environment is client-side, it returns `true`; otherwise, it returns `false`. This function is used to conditionally execute code based on whether it is running on the client-side or the server-side.
 
-#### Example
+**Example**
 
 ```js
 if (isClient()) {
@@ -195,7 +195,7 @@ if (isClient()) {
 
 Checks whether the specified value is a collection or not. We use the term 'collection' to refer to both array and object types, grouping them under a single category. If the value is a collection, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isCollect([1, 2, 3]); //=> true
@@ -215,7 +215,7 @@ isCollect({
 
 Checks whether the specified value is of type `Date` or not. If the value is a `Date` object, it returns `true`; otherwise, it returns `false`. This function is used to determine whether a value is an instance of the `Date` class.
 
-#### Example
+**Example**
 
 ```js
 isDate(new Date()); //=> true
@@ -249,7 +249,7 @@ isDivisible(10, 3);
 
 Checks if a value is an Element object.
 
-#### Example
+**Example**
 
 ```js
 isElement(document.createElement('div')); //=> true
@@ -265,7 +265,7 @@ isElement(document.createTextNode('Hi there and greetings!')); //=> false
 
 Checks if the specified value is empty. It considers a value as empty if it is an empty string, symbol, collection (array, object, Map, Set), or other primitive types such as number, null, undefined, boolean, function, or regular expression. If the value is empty, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isEmpty([]); //=> true
@@ -343,7 +343,7 @@ isEmpty(undefined); //=> true
 
 Checks if the two specified values are equal. It compares the values deeply, recursively comparing each property of objects. If the values are equal, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isEqual([1, 2, 3], [1, 2, 3]); //=> true
@@ -371,7 +371,7 @@ isEqual(checkPermission(), true); //=> true
 
 Checks whether the specified value belongs to the error class or not. If the value is an instance of an error class, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 const error = new Error();
@@ -394,7 +394,7 @@ try {
 
 Checks whether the specified value is an even number or not. If the value is an even number, it returns `true`; otherwise, it returns `false`. This function is used to determine whether a value is divisible by 2 without a remainder.
 
-#### Example
+**Example**
 
 ```js
 isEven(6); //=> true
@@ -412,7 +412,7 @@ isEven(5); //=> false
 
 Checks whether the specified value is equal to `false`. If the value is `false`, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isFalse(false); //=> true
@@ -428,7 +428,7 @@ isFalse(true); //=> false
 
 Checks whether the specified value is falsy. If the value is falsy, it returns `true`; otherwise, it returns `false`. This function is used to determine whether a value evaluates to false in a boolean context.
 
-#### Example
+**Example**
 
 ```js
 isFalsy(true); //=> false
@@ -460,7 +460,7 @@ isFalsy(0); //=> true
 
 Checks whether the specified value is a floating-point number or not. If the value is a floating-point number, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isFloat(34.5); //=> true
@@ -478,7 +478,7 @@ isFloat(23); //=> false
 
 Checks whether the specified value is a function or not. If the value is a function, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isFunction(function test() {
@@ -496,7 +496,7 @@ isFunction('This is a test function.'); //=> false
 
 Checks whether the specified value is an integer or not. If the value is an integer, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isInteger(1); //=> true
@@ -553,7 +553,7 @@ isInteger(Infinity); //=> false
 
 Checks whether the specified collection is iterable or not. If the collection is iterable, it returns `true`; otherwise, it returns `false`. This function is used to determine whether a collection can be iterated over using a loop or iterator.
 
-#### Example
+**Example**
 
 ```js
 isIterable('Isaac Newton'); //=> true
@@ -591,7 +591,7 @@ isIterable(new WeakMap()); //=> false
 
 checks whether the specified value is a key belonging to the given source. If the value is a key of the source, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isKey('fullname', {
@@ -606,7 +606,7 @@ isKey('fullname', {
 
 Checks whether the browser supports the `localStorage` feature or not. If the feature is supported, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isLocalStorage(); //=> true || false
@@ -618,7 +618,7 @@ isLocalStorage(); //=> true || false
 
 Checks whether the specified value is `NaN` and whether its type is `Number`. If the value is `NaN`, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isNaN(NaN); //=> true
@@ -652,7 +652,7 @@ isNaN('uty'); //=> false
 
 Checks whether the specified value is null or undefined. If the value is null or undefined, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isNil(null); //=> true
@@ -674,7 +674,7 @@ isNil({ foo: 'bar' }); //=> false
 
 Checks if a value is a Node object.
 
-#### Example
+**Example**
 
 ```js
 isNode(document.createElement('div')); //=> true
@@ -690,7 +690,7 @@ isNode(document.createTextNode('Hi there and greetings!')); //=> true
 
 Checks whether the specified value is null. If the value is null, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isNull(null); //=> true
@@ -708,7 +708,7 @@ isNull(undefined); //=> false
 
 Checks whether the specified value is a number. If the value is a number, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isNumber(10); //=> true
@@ -754,7 +754,7 @@ isNumber(NaN); //=> true
 
 Checks whether the specified value is a real object. If the value is a real object, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isObject({ number: 15 }); //=> true
@@ -776,7 +776,7 @@ isObject(null); //=> false
 
 Checks whether the specified value is an object. If the value is an object, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isObjects({ number: 15 }); //=> true
@@ -798,7 +798,7 @@ isObjects(null); //=> true
 
 Checks whether the specified value is an odd number. If the value is an odd number, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isOdd(6); //=> false
@@ -816,7 +816,7 @@ isOdd(5); //=> true
 
 Checks whether the specified value is a primitive type. If the value is a primitive type, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isPrimitive(null); //=> true
@@ -856,7 +856,7 @@ isPrimitive(new Date()); //=> false
 
 Checks whether the specified value is a Promise. If the value is a Promise, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isPromise(new Promise(resolve, reject)); //=> true
@@ -884,7 +884,7 @@ isPromise(function () {
 
 Checks whether the specified value is a regular expression. If the value is a regular expression, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isRegExp(/^[0-9a-fA-F]+$/); //=> true
@@ -902,7 +902,7 @@ isRegExp('/^[0-9a-fA-F]+$/'); //=> false
 
 Checks whether the current environment is a server-side environment. If the environment is a server, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 if (isServer()) {
@@ -919,7 +919,7 @@ if (isServer()) {
 
 Checks whether the specified value is a string. If the value is a string, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isString(['a', 'b', 'c', 'd']); //=> false
@@ -945,7 +945,7 @@ isString({ a: 'a', b: 'b' }); //=> false
 
 Checks whether the specified value is a symbol. If the value is a symbol, it returns `true`; otherwise, it returns `false`. Symbols are unique and immutable values that can be used as object property keys.
 
-#### Example
+**Example**
 
 ```js
 isSymbol(Symbol()); //=> true
@@ -975,7 +975,7 @@ isSymbol('foo'); //=> false
 
 Checks if the given value is an instance of the Text interface.
 
-#### Example
+**Example**
 
 ```js
 isText(document.createElement('div')); //=> false
@@ -991,7 +991,7 @@ isText(document.createTextNode('Hi there and greetings!')); //=> true
 
 Checks whether the specified value is equal to `true`. If the value is `true`, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isTrue(true); //=> true
@@ -1007,7 +1007,7 @@ isTrue(false); //=> false
 
 Checks whether the specified value evaluates to `true`. If the value is truthy, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isTruthy(true); //=> true
@@ -1039,7 +1039,7 @@ isTruthy(0); //=> false
 
 Determines the actual type of the given value.
 
-#### Example
+**Example**
 
 ```js
 isType(Promise.resolve('something'));
@@ -1099,7 +1099,7 @@ isType(new User()); //=> object
 
 Checks whether the specified value is undefined. If the value is undefined, it returns `true`; otherwise, it returns `false`.
 
-#### Example
+**Example**
 
 ```js
 isUndefined(null); //=> false

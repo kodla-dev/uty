@@ -10,7 +10,7 @@ Our libraries offer different ways to use them, based on what you need.
 
 Functions can be used by invoking them in a traditional way.
 
-#### Example
+**Example**
 
 ```js
 apply(Math.max, [1, 2, 3, 4]);
@@ -26,7 +26,7 @@ remove(['age', 'city'], { name: 'John', age: 30, city: 'New York' });
 
 If you need to use a function with the same logic multiple times, you can create a new function without specifying a collection.
 
-#### Example
+**Example**
 
 ```js
 const max = apply(Math.max);
@@ -52,7 +52,7 @@ trim({ name: 'Hans', age: 50, city: 'Hamburg' });
 
 To combine function outputs in a sequential and understandable way, you can use the `pipe` function to compose operations.
 
-#### Example
+**Example**
 
 ```js
 // prettier-ignore
