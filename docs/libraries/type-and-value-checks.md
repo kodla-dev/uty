@@ -231,7 +231,7 @@ isDate(new Date().getTime()); //=> false
 
 Checks if a value is divisible by a given number.
 
-#### Örnek
+**Example**
 
 ```js
 isDivisible(10, 2);

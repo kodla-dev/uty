@@ -762,7 +762,7 @@ total([1, 2, 3, 4]); //=>10
 
 Removes specified keys from a collection.
 
-#### Örnek
+**Example**
 
 ```js
 remove([0, 1], [1, 2, 3, 4]);
