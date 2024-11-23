@@ -96,7 +96,7 @@ total([6, 7, 8, 9, 10]);
 These usage options not only allow you to discover the beauty of functional programming but also make your code more effective, readable, and manageable.
 
 > [!TIP]
-> If you use our math library for mathematical operations, you can perform these operations more easily.
+> If you use our `math` library for mathematical operations, you can perform these operations more easily.
 
 ```js
 import { add, divisible, sum } from 'uty/math';
