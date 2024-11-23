@@ -149,7 +149,7 @@ function isArray<T>(value: T): value is Include<T, unknown[] | Readonly<unknown[
 
 ## Documentation
 
-Visit our [documentation](DOCUMENTATION) for detailed guides and references.
+Visit our [documentation][DOCUMENTATION] for detailed guides and references.
 
 ---
 
