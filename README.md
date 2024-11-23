@@ -172,4 +172,4 @@ All notable changes to this project will be documented in the [changelog][CHANGE
 [SIZE]: https://bundlephobia.com/package/uty
 [LICENSE]: https://github.com/kodla-dev/uty/blob/main/LICENSE
 [CHANGELOG]: https://github.com/kodla-dev/uty/blob/main/CHANGELOG.md
-[DOCUMENTATION]: https://github.com/kodla-dev/uty/tree/main/documentation
+[DOCUMENTATION]: https://github.com/kodla-dev/uty/tree/main/docs
