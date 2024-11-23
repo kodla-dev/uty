@@ -36,7 +36,7 @@ export const data = {
   arrayNested: [1, 2, 3, [4, 5]],
   arrayEmpty: [],
   object: { name: 'is' },
-  objectNested: { name: 'is', library: { name: 'renit' } },
+  objectNested: { name: 'is', library: { name: 'uty' } },
   objectEmpty: {},
   function: () => {},
   functionAsync: async () => {},
