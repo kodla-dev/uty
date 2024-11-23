@@ -4,8 +4,17 @@
   "description": "utilities for common tasks",
   "keywords": [
     "js",
+    "tool",
     "utils",
-    "helpers"
+    "helpers",
+    "collect",
+    "define",
+    "event",
+    "is",
+    "math",
+    "string",
+    "to",
+    "type"
   ],
   "bugs": {
     "url": "https://github.com/kodla-dev/uty/issues"
@@ -23,25 +32,60 @@
   "type": "module",
   "exports": {
     ".": {
-      "default": "./src/index.js"
+      "default": "./src/index.js",
+      "types": "./type/index.d.ts"
+    },
+    "./collect": {
+      "default": "./src/collect.js",
+      "types": "./type/index.d.ts"
+    },
+    "./define": {
+      "default": "./src/define.js",
+      "types": "./type/index.d.ts"
+    },
+    "./event": {
+      "default": "./src/event.js",
+      "types": "./type/index.d.ts"
     },
     "./is": {
-      "default": "./src/is.js"
+      "default": "./src/is.js",
+      "types": "./type/index.d.ts"
+    },
+    "./math": {
+      "default": "./src/math.js",
+      "types": "./type/index.d.ts"
+    },
+    "./string": {
+      "default": "./src/string.js",
+      "types": "./type/index.d.ts"
+    },
+    "./to": {
+      "default": "./src/to.js",
+      "types": "./type/index.d.ts"
+    },
+    "./type": {
+      "default": "./src/type.ts",
+      "types": "./type/index.d.ts"
     }
   },
   "main": "./src/index.js",
   "module": "./src/index.js",
+  "types": "./type/index.d.ts",
   "files": [
-    "src"
+    "src",
+    "type",
+    "./*.d.ts"
   ],
   "scripts": {
+    "prebuild": "rimraf type *.d.ts -g",
+    "build": "node build",
     "format": "prettier --write .",
     "lint": "prettier --check . && eslint .",
     "test": "vitest"
   },
   "devDependencies": {
     "@eslint/js": "9.15.0",
-    "dts-buddy": "^0.5.3",
+    "dts-buddy": "0.5.3",
     "eslint": "9.15.0",
     "eslint-config-prettier": "9.1.0",
     "globals": "15.12.0",
@@ -49,6 +93,7 @@
     "prettier": "3.3.3",
     "prettier-plugin-organize-imports": "4.1.0",
     "prettier-plugin-packagejson": "2.5.5",
+    "rimraf": "^6.0.1",
     "vitest": "2.1.5"
   },
   "engines": {
