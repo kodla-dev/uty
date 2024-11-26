@@ -211,6 +211,18 @@ isCollect({
 
 ---
 
+### `isComment`
+
+Checks if the value is a Comment.
+
+**Example**
+
+```js
+isComment(document.createComment('not-so-secret comment')); //=> true
+```
+
+---
+
 ### `isDate`
 
 Checks whether the specified value is of type `Date` or not. If the value is a `Date` object, it returns `true`; otherwise, it returns `false`. This function is used to determine whether a value is an instance of the `Date` class.
