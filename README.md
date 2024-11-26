@@ -27,7 +27,7 @@ npm i uty
 
 ## Overview
 
-### :small_blue_diamond: Collection Interactions
+### 🔹 Collection Interactions
 
 Helpers for working with arrays and objects, providing functions for data extraction and manipulation.
 
@@ -42,7 +42,7 @@ pluck('name', 'detail.date', [
 //=> {1879: 'Albert', 1643: 'Isaac'}
 ```
 
-### :small_blue_diamond: Define Hub
+### 🔹 Define Hub
 
 A set of consistent values used throughout the application to maintain clarity and reduce redundancy.
 
@@ -53,7 +53,7 @@ console.log(MAX_SAFE_INTEGER); //=> 9007199254740991
 console.log(RGX_WHITESPACE); //=> /^\s*$/
 ```
 
-### :small_blue_diamond: Event Listeners
+### 🔹 Event Listeners
 
 A simple, customizable event system for handling and emitting events.
 
@@ -70,7 +70,7 @@ bus.emit('tick', 1);
 //=> 1
 ```
 
-### :small_blue_diamond: Helpers
+### 🔹 Helpers
 
 Commonly used utility functions that streamline coding patterns and reduce repetitive tasks.
 
@@ -87,7 +87,7 @@ await total(Promise.resolve([6, 7, 8, 9, 10]));
 //=> 54
 ```
 
-### :small_blue_diamond: Type and Value Checks
+### 🔹 Type and Value Checks
 
 Provides functions to assess variable types, compare values, and gather information about the system environment.
 
@@ -99,7 +99,7 @@ isArrayLike('fruits'); //=> true
 isEqual([1, 2, 3], [1, 2, 3, 4]); //=> false
 ```
 
-### :small_blue_diamond: Mathematical Operations
+### 🔹 Mathematical Operations
 
 Efficient tools for a wide range of mathematical calculations designed to simplify number handling and analysis.
 
@@ -113,7 +113,7 @@ avg('pages', [
 //=> 636
 ```
 
-### :small_blue_diamond: String Tools
+### 🔹 String Tools
 
 Utility functions for easy and efficient string manipulation and formatting.
 
@@ -124,7 +124,7 @@ ucfirst('uty is simple'); //=> Uty is simple
 ucwords('uty is simple'); //=> Uty Is Simple
 ```
 
-### :small_blue_diamond: Data Transformation
+### 🔹 Data Transformation
 
 Converts data types and structures, making it easy to switch between arrays, objects, and other formats.
 
@@ -135,7 +135,7 @@ toArray({ first: 'Lionel', middle: 'Andrés', last: 'Messi' });
 //=> ['Lionel', 'Andrés', 'Messi']
 ```
 
-### :small_blue_diamond: Type Utilities
+### 🔹 Type Utilities
 
 Advanced type-checking and utilities to ensure safe operations.
 
