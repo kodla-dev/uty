@@ -14,7 +14,7 @@ import { avg, sum } from 'uty/math';
 
 Adds two values together. Supports numbers, strings, and collections.
 
-#### Example
+**Example**
 
 ```js
 add(1, 2);
@@ -48,7 +48,7 @@ add(5, { a: 1, b: 2, c: 3 });
 
 Calculates the average of a collection. Optionally averages the values of a specified key or the result of a function applied to each element.
 
-#### Example
+**Example**
 
 ```js
 avg([1, 2, 3, 4]);
@@ -85,7 +85,7 @@ pipe([1, 2, 3, 4], add(10), avg);
 
 Filters a collection to include only items divisible by a given number or numbers.
 
-#### Example
+**Example**
 
 ```js
 divisible(2, [1, 2, 3, 4, 5, 6]);
@@ -108,7 +108,7 @@ divisible(3, { a: 1, b: 3, c: 6, d: 9 });
 
 Returns the size of a collection, such as an array, object, string, Map, Set, or Promise. For arrays and strings, it returns the length. For objects, it returns the number of enumerable properties. For Map and Set objects, it returns the number of elements. For Promise objects, it waits for the promise to resolve and returns the size of the resolved value.
 
-#### Example
+**Example**
 
 ```js
 size([1, 2, 3]); //=> 3
@@ -144,7 +144,7 @@ await size(Promise.resolve([1, 2, 3])); //=> 3
 
 Calculates the sum of a collection. Optionally sums the values of a specified key or the result of a function applied to each element.
 
-#### Example
+**Example**
 
 ```js
 sum([1, 2, 3, 4]);

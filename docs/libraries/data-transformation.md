@@ -14,7 +14,7 @@ import { toArray, toJson } from 'uty/to';
 
 Converts a collection into a array. If the collection is an object, it returns an array of the object's values.
 
-#### Example
+**Example**
 
 ```js
 toArray([1, 2, 3, 'b', 'c']);
@@ -51,7 +51,7 @@ pipe(
 
 Converts an `Iterable` collection into an `AsyncIterable` to process the values as `Promises`.
 
-#### Example
+**Example**
 
 ```js
 let acc = 0;
@@ -80,7 +80,7 @@ await pipe(
 
 Converts the specified collection into JSON format.
 
-#### Example
+**Example**
 
 ```js
 toJson([1, 2, 3, 'b', 'c']);
@@ -104,7 +104,7 @@ toJson({
 
 Returns the specified value as a string.
 
-#### Example
+**Example**
 
 ```js
 toString([1, 2, 3, 4, 5]);
@@ -124,7 +124,7 @@ toString({ id: 1 });
 
 Converts a collection to its JSON string representation or other types of strings.
 
-#### Example
+**Example**
 
 ```js
 toStringify([1, 2, 3, 4, 5]);
