@@ -111,6 +111,27 @@ compare([1, 2, 3, 4, 12, 15]); //=> [12, 15]
 
 ---
 
+### `dot`
+
+Gets a value from an object using dot notation. You can also set a default value if the key is not found.
+
+**Example**
+
+```js
+const data = {
+  list: {
+    name: 'Thomas',
+    surname: '',
+  },
+};
+dot('list.name', data); //=> 'Thomas'
+dot('list.surname', data, 'Edison'); //=> ''
+dot('list.age', data, 42); // => 42
+dot('list.age', data); // => undefined
+```
+
+---
+
 ### `each`
 
 Iterates over each element in a collection and applies the provided function. It is useful for performing an operation on each item in an array or each key-value pair in an object.
@@ -330,6 +351,44 @@ implode('product', ', ', [
 
 > [!TIP]
 > If you need to select a deep key from an object, you can use dot notation like `product.name`. For more details on selections, check out the `pluck` function.
+
+---
+
+### `iterate`
+
+A utility for iterating over a sequence of indices or arrays. It supports both synchronous and asynchronous callbacks, with an optional mechanism to stop early when a condition is met.
+
+**Example**
+
+```js
+// Synchronous iteration
+iterate(index => console.log(index), 5);
+//=> 0, 1, 2, 3, 4
+```
+
+```js
+// Stopping on a condition
+iterate(index => (index === 3 ? 'Found' : undefined), true, 5);
+//=> 'Found'
+```
+
+```js
+// Using an array-like object
+iterate(index => console.log(index), ['a', 'b', 'c']);
+//=> 0, 1, 2
+```
+
+```js
+// Handling a promise
+await iterate(async index => console.log(index * 2), 3);
+//=> 0, 2, 4
+```
+
+```js
+// Partially-applied function
+const partial = iterate(index => console.log(index));
+partial(3); //=> 0, 1, 2
+```
 
 ---
 
@@ -908,6 +967,30 @@ some(item => item > 0, {
 
 ---
 
+### `sort`
+
+A flexible utility for sorting arrays. Supports custom comparator functions, auto-detection of numeric sorting, and partial application to different collections.
+
+**Example**
+
+```js
+sort(['banana', 'apple', 'cherry']); //=> ['apple', 'banana', 'cherry']
+```
+
+```js
+sort([5, 2, 8, 1]); //=> [1, 2, 5, 8]
+```
+
+```js
+sort((a, b) => b - a, [5, 2, 8, 1]); //=> [8, 5, 2, 1]
+```
+
+```js
+sort(['10', '2', '30', '1']); //=> ['1', '10', '2', '30']
+```
+
+---
+
 ### `splice`
 
 Modifies the contents of an array by removing or replacing existing elements and/or adding new elements in place.
@@ -1015,6 +1098,44 @@ takeUntil(item => item >= 1000, {
 
 ---
 
+### `unique`
+
+Filters a collection to include only unique items.
+
+**Example**
+
+```js
+unique([1, 2, 2, 3, 1]); //=> [1, 2, 3]
+```
+
+```js
+const users = [
+  { id: 1, name: 'Aziz' },
+  { id: 2, name: 'Sancar' },
+  { id: 1, name: 'Aziz' },
+];
+unique('id', users);
+//=> [{ id: 1, name: 'Aziz' }, { id: 2, name: 'Sancar' }]
+```
+
+```js
+const points = [
+  { x: 1, y: 2 },
+  { x: 3, y: 4 },
+  { x: 1, y: 2 },
+];
+unique(point => `${point.x},${point.y}`, points);
+//=> [{ x: 1, y: 2 }, { x: 3, y: 4 }]
+```
+
+```js
+const uniqueById = unique('id');
+uniqueById(users);
+//=> [{ id: 1, name: 'Aziz' }, { id: 2, name: 'Sancar' }]
+```
+
+---
+
 ### `value`
 
 Retrieves all values for a specified key.
@@ -1055,4 +1176,55 @@ values({ name: 'Galileo', last: 'Galilei' });
 ```js
 await values(Promise.resolve({ name: 'Galileo', last: 'Galilei' }));
 //=> ['Galileo', 'Galilei']
+```
+
+---
+
+### `walk`
+
+A utility for iterating over collections with synchronous or asynchronous callback execution. It supports an optional stopping condition to terminate the iteration early.
+
+**Example**
+
+```js
+// Iterating over an array
+walk((value, index) => console.log(index, value), [10, 20, 30]);
+//=> 0 10, 1 20, 2 30
+```
+
+```js
+// Stopping condition with an array
+walk((value, index) => (value > 15 ? value : undefined), true, [10, 20, 30]);
+//=> 20
+```
+
+```js
+// Iterating over an object
+walk((key, value, index) => console.log(key, value, index), { a: 1, b: 2, c: 3 });
+//=> a 1 0, b 2 1, c 3 2
+```
+
+```js
+// Asynchronous callback
+await walk(
+  async (value, index) => {
+    const result = await Promise.resolve(value * 2);
+    console.log(result);
+  },
+  [5, 10]
+);
+//=> 10, 20
+```
+
+```js
+// Handling a promise as collection
+walk((value, index) => console.log(index, value), Promise.resolve([1, 2, 3]));
+//=> 0 1, 1 2, 2 3
+```
+
+```js
+// Partial application
+const walkArray = walk((value, index) => console.log(value * index));
+walkArray([1, 2, 3]);
+//=> 0, 2, 6
 ```
