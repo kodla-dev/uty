@@ -27,6 +27,20 @@ npm i uty
 
 ## Overview
 
+### 🔹 Type and Value Checks
+
+Provides functions to assess variable types, compare values, and gather information about the system environment.
+
+```js
+import { isArrayLike, isEqual } from 'uty/is';
+
+isArrayLike('fruits'); //=> true
+
+isEqual([1, 2, 3], [1, 2, 3, 4]); //=> false
+```
+
+[`more 'is' examples`](https://github.com/kodla-dev/uty/blob/main/docs/libraries/type-and-value-checks.md)
+
 ### 🔹 Collection Interactions
 
 Helpers for working with arrays and objects, providing functions for data extraction and manipulation.
@@ -42,62 +56,7 @@ pluck('name', 'detail.date', [
 //=> {1879: 'Albert', 1643: 'Isaac'}
 ```
 
-### 🔹 Define Hub
-
-A set of consistent values used throughout the application to maintain clarity and reduce redundancy.
-
-```js
-import { MAX_SAFE_INTEGER, RGX_WHITESPACE } from 'uty/define';
-
-console.log(MAX_SAFE_INTEGER); //=> 9007199254740991
-console.log(RGX_WHITESPACE); //=> /^\s*$/
-```
-
-### 🔹 Event Listeners
-
-A simple, customizable event system for handling and emitting events.
-
-```js
-import { event } from 'uty/event';
-
-const bus = event();
-
-bus.on('tick', number => {
-  console.log(number);
-});
-
-bus.emit('tick', 1);
-//=> 1
-```
-
-### 🔹 Helpers
-
-Commonly used utility functions that streamline coding patterns and reduce repetitive tasks.
-
-```js
-import { pipe } from 'uty';
-import { divisible, add, sum } from 'uty/math';
-
-const total = pipe(divisible(2), add(10), sum);
-
-total([1, 2, 3, 4, 5]);
-//=> 26
-
-await total(Promise.resolve([6, 7, 8, 9, 10]));
-//=> 54
-```
-
-### 🔹 Type and Value Checks
-
-Provides functions to assess variable types, compare values, and gather information about the system environment.
-
-```js
-import { isArrayLike, isEqual } from 'uty/is';
-
-isArrayLike('fruits'); //=> true
-
-isEqual([1, 2, 3], [1, 2, 3, 4]); //=> false
-```
+[`more 'collect' examples`](https://github.com/kodla-dev/uty/blob/main/docs/libraries/collection-interactions.md)
 
 ### 🔹 Mathematical Operations
 
@@ -112,6 +71,8 @@ avg('pages', [
 ]);
 //=> 636
 ```
+
+[`more 'math' examples`](https://github.com/kodla-dev/uty/blob/main/docs/libraries/mathematical-operations.md)
 
 ### 🔹 String Tools
 
@@ -133,6 +94,57 @@ import { toArray } from 'uty/to';
 
 toArray({ first: 'Lionel', middle: 'Andrés', last: 'Messi' });
 //=> ['Lionel', 'Andrés', 'Messi']
+```
+
+[`more 'to' examples`](https://github.com/kodla-dev/uty/blob/main/docs/libraries/data-transformation.md)
+
+### 🔹 Helpers
+
+Commonly used utility functions that streamline coding patterns and reduce repetitive tasks.
+
+```js
+import { pipe } from 'uty';
+import { divisible, add, sum } from 'uty/math';
+
+const total = pipe(divisible(2), add(10), sum);
+
+total([1, 2, 3, 4, 5]);
+//=> 26
+
+await total(Promise.resolve([6, 7, 8, 9, 10]));
+//=> 54
+```
+
+[`more helpers`](https://github.com/kodla-dev/uty/tree/main/docs/helpers)
+
+### 🔹 Event Listeners
+
+A simple, customizable event system for handling and emitting events.
+
+```js
+import { event } from 'uty/event';
+
+const bus = event();
+
+bus.on('tick', number => {
+  console.log(number);
+});
+
+bus.emit('tick', 1);
+//=> 1
+```
+
+[`more 'event' examples`](https://github.com/kodla-dev/uty/blob/main/docs/libraries/event-listeners.md)
+
+### 🔹 Define Hub
+
+A set of consistent values used throughout the application to maintain clarity and reduce redundancy.
+
+```js
+import { MAX_SAFE_INTEGER, RGX_WHITESPACE } from 'uty/define';
+
+console.log(MAX_SAFE_INTEGER); //=> 9007199254740991
+console.log(RGX_WHITESPACE); //=> /^\s*$/
 ```
 
 ### 🔹 Type Utilities
