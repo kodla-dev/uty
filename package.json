@@ -1,13 +1,14 @@
 {
   "name": "uty",
   "version": "0.1.0",
-  "description": "utilities for common tasks",
+  "description": "JavaScript utilities for common tasks",
   "keywords": [
+    "js",
     "javascript",
+    "utils",
     "utilities",
     "helpers",
     "toolkit",
-    "utils",
     "collect",
     "define",
     "event",
