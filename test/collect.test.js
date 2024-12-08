@@ -128,6 +128,11 @@ describe('chunk', () => {
     const result2 = custom({ name: 'Albert', last: 'Einstein', age: '∞' });
     expect(result2).toEqual([{ name: 'Albert', last: 'Einstein' }, { age: '∞' }]);
   });
+
+  it('chunk:pipe', () => {
+    const result = pipe([1, 2, 3, 4, 5, 6, 7], chunk(2));
+    expect(result).toEqual([[1, 2], [3, 4], [5, 6], [7]]);
+  });
 });
 
 describe('diff', () => {
@@ -176,6 +181,11 @@ describe('diff', () => {
 
     expect(result).toEqual([5, 6]);
     expect(result2).toEqual([12, 15]);
+  });
+
+  it('diff:pipe', () => {
+    const result = pipe([1, 2, 3, 4, 5, 6, 7], diff([1, 2, 3, 4, 7]));
+    expect(result).toEqual([5, 6]);
   });
 });
 
@@ -262,6 +272,16 @@ describe('entries', () => {
     ];
     const entry = entries();
     expect(entry(data)).toEqual(result);
+  });
+
+  it('entries:pipe', () => {
+    const data = { a: 1, b: '2', c: true };
+    const result = [
+      ['a', 1],
+      ['b', '2'],
+      ['c', true],
+    ];
+    expect(pipe(data, entries)).toEqual(result);
   });
 });
 
@@ -358,6 +378,12 @@ describe('filter', () => {
     });
     expect(result).toEqual({ books: 194, users: 1458, collections: 500 });
   });
+
+  it('filter:pipe', () => {
+    // prettier-ignore
+    expect(pipe([0, 1, 2, null, true, 3, 4, "", undefined,
+    false, 5, 6, '', 7, [], 8, 9, {}, 10], filter)).toEqual([0, 1, 2, true, 3, 4, false, 5, 6, 7, 8, 9, 10]);
+  });
 });
 
 describe('flat', () => {
@@ -427,6 +453,11 @@ describe('flat', () => {
     const result = await flatten(data);
     expect(result).toEqual([0, 1, 2, 3, 4, 5]);
   });
+
+  it('flat:pipe', () => {
+    const data = [0, 1, 2, [3, 4]];
+    expect(pipe(data, flat)).toEqual([0, 1, 2, 3, 4]);
+  });
 });
 
 describe('implode', () => {
@@ -451,6 +482,9 @@ describe('implode', () => {
       ])
     ).toEqual('ChromeOS, ChatGPT, VS Code');
   });
+  it('implode:pipe', () => {
+    expect(pipe([1, 2, 3], implode('-'))).toEqual('1-2-3');
+  });
 });
 
 describe('join', () => {
@@ -465,6 +499,9 @@ describe('join', () => {
   });
   it('join:object', () => {
     expect(join(' ', { name: 'Marie', last: 'Curie' })).toEqual('Marie Curie');
+  });
+  it('join:pipe', () => {
+    expect(pipe(['a', 'b', 'c'], join)).toEqual('a,b,c');
   });
 });
 
@@ -580,6 +617,10 @@ describe('last', () => {
     const result = await lessThanTwoLast(data);
     expect(result).toBe(1);
   });
+
+  it('last:pipe', () => {
+    expect(pipe([1, 2], last)).toBe(2);
+  });
 });
 
 describe('loop', () => {
@@ -620,6 +661,15 @@ describe('map', () => {
     const add10 = map(item => item + 10);
     expect(add10(data1)).toEqual([11, 12, 13, 14]);
     expect(add10(data2)).toEqual([15, 16, 17, 18]);
+  });
+
+  it('map:pipe', () => {
+    expect(
+      pipe(
+        [1, 2, 3, 4],
+        map(item => item + 10)
+      )
+    ).toEqual([11, 12, 13, 14]);
   });
 });
 
@@ -671,6 +721,10 @@ describe('merge', () => {
     const result = merged(['apple', 'pear']);
     expect(result).toEqual(['apple', 'pear', 'orange']);
   });
+
+  it('merge:pipe', () => {
+    expect(pipe(['apple', 'pear'], merge(['orange']))).toEqual(['apple', 'pear', 'orange']);
+  });
 });
 
 describe('pluck', () => {
@@ -716,6 +770,20 @@ describe('pluck', () => {
       ['Super User', 'Writer'],
     ]);
   });
+  it('pluck:pipe', () => {
+    expect(
+      pipe(
+        [
+          { id: 1, roles: [{ name: 'Editor' }, { name: 'Admin' }] },
+          { id: 2, roles: [{ name: 'Super User' }, { name: 'Writer' }] },
+        ],
+        pluck('roles.*.name')
+      )
+    ).toEqual([
+      ['Editor', 'Admin'],
+      ['Super User', 'Writer'],
+    ]);
+  });
 });
 
 describe('pop', () => {
@@ -737,6 +805,10 @@ describe('pop', () => {
       birth: '1403',
     });
   });
+
+  it('pop:pipe', () => {
+    expect(pipe([1, 2, 3, 4, 5], pop)).toEqual(5);
+  });
 });
 
 describe('prepend', () => {
@@ -755,6 +827,9 @@ describe('prepend', () => {
   });
   it('prepend:string', () => {
     expect(prepend('?', 'category=1&book=5')).toEqual('?category=1&book=5');
+  });
+  it('prepend:pipe', () => {
+    expect(pipe([1, 2, 3, 4, 5], prepend(0))).toEqual([0, 1, 2, 3, 4, 5]);
   });
 });
 
