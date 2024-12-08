@@ -21,6 +21,7 @@ import {
   RAW_STRING,
   RAW_SYMBOL,
   RAW_UNDEFINED,
+  RGX_EMAIL,
 } from './define.js';
 import { size } from './math.js';
 import { toStringify } from './to.js';
@@ -161,6 +162,15 @@ export function isDivisible(value, number) {
  */
 export function isElement(value) {
   return value instanceof Element;
+}
+
+/**
+ * Checks if the email address is valid.
+ * @param {string} value - Check the string.
+ * @returns {boolean} `true` if the value matches the email pattern, otherwise `false`.
+ */
+export function isEmail(value) {
+  return RGX_EMAIL.test(value);
 }
 
 /**

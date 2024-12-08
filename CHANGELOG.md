@@ -6,6 +6,18 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- New `isEmail` function to validate email addresses.
+
+  ```js
+  isEmail('example@domain.com'); //=> true
+  ```
+
+  - New email validation regex: `RGX_EMAIL`.
+
+    ```js
+    RGX_EMAIL.test('invalid-email'); //=> false
+    ```
+
 - New `cls` function for combining class names.
 
   ```js
