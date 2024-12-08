@@ -6,6 +6,16 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- New `cls` function for combining class names.
+
+  ```js
+  cls('btn', { active: true, disabled: false }, ['extra', 'class']);
+  //=> "btn active extra class"
+  ```
+
+  - Supports strings, numbers, arrays, and objects.
+  - Filters out falsy values.
+
 ### Changed
 
 - Enhance `supplant` function with flexible placeholder delimiters

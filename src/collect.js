@@ -5,6 +5,7 @@
   --------------------------------------------------------------------------------------------------
 */
 
+import { RAW_WHITESPACE } from './define.js';
 import { pipe } from './index.js';
 import {
   isArray,
@@ -19,6 +20,7 @@ import {
   isNil,
   isNumber,
   isObject,
+  isObjects,
   isPrimitive,
   isPromise,
   isString,
@@ -69,6 +71,28 @@ export function chunk(length, collect) {
   }
 
   return chunks;
+}
+
+/**
+ * Combines class names into one string.
+ * @param {...any} collect - Class names can be strings, numbers, arrays, or objects.
+ * @returns {string} A space-separated string of classes.
+ */
+export function cls(...collect) {
+  const classes = [];
+  for (let i = 0, c = length(collect); i < c; i++) {
+    const arg = collect[i];
+    if (isString(arg) || isNumber(arg)) classes.push(arg);
+    if (isArray(arg)) classes.push(cls.apply(null, arg));
+    if (isObjects(arg)) {
+      if (arg.toString === Object.prototype.toString) {
+        for (const key in arg) {
+          if (hasOwn(key, arg) && arg[key]) classes.push(key);
+        }
+      } else classes.push(arg.toString());
+    }
+  }
+  return classes.join(RAW_WHITESPACE);
 }
 
 /**
