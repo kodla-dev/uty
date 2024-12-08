@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+### Fixed
+
+- Check objects in 'join' function argument
+
 ## [0.1.0] - 2024-11-23
 
 ### Added

@@ -6,7 +6,7 @@
 */
 
 import { dot, join, map } from './collect.js';
-import { RAW_EMPTY } from './define.js';
+import { RAW_EMPTY, RAW_WHITESPACE } from './define.js';
 import { pipe } from './index.js';
 import { isString, isUndefined } from './is.js';
 
@@ -131,7 +131,7 @@ export function ucwords(locale, collect) {
     lower(locale),
     words,
     map(letter => ucfirst(locale, letter)),
-    join
+    join(RAW_WHITESPACE)
   );
 }
 

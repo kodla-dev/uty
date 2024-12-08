@@ -305,7 +305,7 @@ export function iterate(fn, stop, length) {
  */
 export function join(glue, finalGlue, collect) {
   if (isUndefined(collect)) {
-    if (isArray(glue)) return join(' ', void 0, glue);
+    if (isArray(glue) || isObject(glue)) return join(void 0, void 0, glue);
     if (isUndefined(finalGlue)) return collect => join(glue, collect);
     if (isString(finalGlue)) return collect => join(glue, finalGlue, collect);
     return join(glue, void 0, finalGlue);
