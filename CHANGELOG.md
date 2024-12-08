@@ -6,10 +6,24 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+### Changed
+
+- Enhance `supplant` function with flexible placeholder delimiters
+
+  ```js
+  supplant('{name} is learning {subject}', { name: 'Alice', subject: 'JavaScript' });
+  //=> "Alice is learning JavaScript"
+  ```
+
+  ```js
+  supplant('<name> loves <food.name>', ['<', '>'], { name: 'Bob', food: { name: 'pizza' } });
+  //=> "Bob loves pizza"
+  ```
+
 ### Fixed
 
-- Check objects in 'join' function argument
-- Adjust 'dot' function argument order and handling
+- Check objects in `join` function argument
+- Adjust `dot` function argument order and handling
 
 ## [0.1.0] - 2024-11-23
 

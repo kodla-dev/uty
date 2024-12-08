@@ -8,7 +8,7 @@
 import { dot, join, map } from './collect.js';
 import { RAW_EMPTY, RAW_WHITESPACE } from './define.js';
 import { pipe } from './index.js';
-import { isString, isUndefined } from './is.js';
+import { isArray, isString, isUndefined } from './is.js';
 
 /**
  * Converts the given string to lowercase, optionally using a specified locale.
@@ -66,35 +66,24 @@ export function sub(start = 1, end, collect) {
   return collect.substring(start);
 }
 
-// supplant placeholders
-const RGX = /{(.*?)}/g;
-
 /**
  * Replaces placeholders in a string with values from an object or tree.
  *
- * @param {string} str - The string with placeholders (e.g., "{key}").
- * @param {Object} mix - The object containing replacement values.
- * @param {Object} tree - The secondary object for deep value lookup.
- * @returns {string} - The string with placeholders replaced by corresponding values.
+ * @param {string|Object} str - The string with placeholders (e.g., "{key}").
+ * @param {Array<string>|undefined} [holders] - A list of opening and closing delimiters for placeholders.
+ * @param {Object|undefined} [collect] - The object containing replacement values.
+ * @returns {string|Function} - The string with placeholders replaced by corresponding values.
  */
-export function supplant(str, mix, tree) {
-  return str.replace(RGX, (x, key, y) => {
-    x = 0;
-    y = mix;
-    const akey = key.trim().split('.');
-    const count = akey.length;
-    if (count > 0) {
-      var val = dot(tree, key, '');
-      if (val) {
-        y = val;
-      } else {
-        while (y && x < count) {
-          y = y[akey[x++]];
-        }
-      }
-    }
-    return y != null ? y : '';
-  });
+export function supplant(str, holders, collect) {
+  if (isUndefined(collect)) {
+    if (!isString(str)) return collect => supplant(collect, holders, str);
+    if (isUndefined(holders)) return collect => supplant(str, void 0, collect);
+    if (isArray(holders)) return collect => supplant(str, holders, collect);
+    return supplant(str, void 0, holders);
+  }
+
+  const rgx = holders ? new RegExp(`\\${holders[0]}(.*?)\\${holders[1]}`, 'g') : /{(.*?)}/g;
+  return str.replace(rgx, (_, key) => dot(key, collect) || '');
 }
 
 /**
