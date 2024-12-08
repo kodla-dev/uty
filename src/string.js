@@ -5,10 +5,11 @@
   --------------------------------------------------------------------------------------------------
 */
 
-import { dot, join, map } from './collect.js';
+import { dot, each, includes, join, map, merge, some } from './collect.js';
 import { RAW_EMPTY, RAW_WHITESPACE } from './define.js';
 import { pipe } from './index.js';
 import { isArray, isString, isUndefined } from './is.js';
+import { length } from './math.js';
 
 /**
  * Converts the given string to lowercase, optionally using a specified locale.
@@ -142,6 +143,63 @@ export function upper(locale, collect) {
   } else {
     return collect.toUpperCase();
   }
+}
+
+/**
+ * Checks text against options.
+ *
+ * This function checks if the text meets the specified criteria, such as length, case,
+ * and character type. It returns an array of criteria that the text satisfies.
+ *
+ * @param {string} text - Text to validate.
+ * @param {Object} [options] - An object with the validation options.
+ * @param {number} [options.minimum] - The minimum length the text must have.
+ * @param {number} [options.maximum] - The maximum length the text must have.
+ * @param {number} [options.lowercase] - The minimum number of lowercase letters required in the text.
+ * @param {number} [options.uppercase] - The minimum number of uppercase letters required in the text.
+ * @param {number} [options.special] - The minimum number of special characters required in the text.
+ * @param {number} [options.number] - The minimum number of numeric digits required in the text.
+ * @param {Array<string>} [options.disable] - An array of forbidden words that cannot be part of the text
+ * @param {Array<string>} [options.require] - An array of required words that must be present in the text.
+ * @returns {Array<string>} An array of criteria that the text passes (e.g., ['minimum', 'lowercase', 'number']).
+ */
+export function validate(text, options = {}) {
+  options = merge(options, {
+    minimum: 0,
+    maximum: Infinity,
+    lowercase: 0,
+    uppercase: 0,
+    special: 0,
+    number: 0,
+    require: 0,
+    disable: 0,
+  });
+
+  let used = [];
+  const rgx = (a, b) => new RegExp(`(?:.*\\p{${a}}.*){${b}}.*`, 'u');
+  const { minimum, maximum, lowercase, uppercase, special, number, disable } = options;
+
+  const regexes = {
+    lowercase: lowercase > 0 ? rgx('Ll', lowercase) : null,
+    uppercase: uppercase > 0 ? rgx('Lu', uppercase) : null,
+    special: special > 0 ? rgx('P', special) : null,
+    number: number > 0 ? rgx('N', number) : null,
+  };
+
+  const len = length(text);
+  if (len >= minimum) used.push('minimum');
+  if (len <= maximum) used.push('maximum');
+
+  each((key, value) => value && value.test(text) && used.push(key), regexes);
+
+  if (options.require || disable) {
+    const textLower = lower(text);
+    const check = some(word => includes(lower(word), textLower));
+    if (options.require && check(options.require)) used.push('require');
+    if (disable && check(disable)) used.push('disable');
+  }
+
+  return used;
 }
 
 /**

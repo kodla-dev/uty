@@ -6,7 +6,32 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- New `isEmail` function to validate email addresses.
+- <details>
+  <summary>New <code>validate</code> function lets you check texts for various things, like length, case, special characters, numbers, and words.</summary>
+
+  ```js
+  validate('HelloWorld123!', {
+    minimum: 8,
+    maximum: 15,
+    lowercase: 2,
+    uppercase: 2,
+    special: 1,
+    number: 2,
+    require: ['Hello'],
+    disable: ['World'],
+  });
+  //=> ['minimum', 'maximum', 'lowercase', 'uppercase', 'special', 'number', 'require', 'disable']
+  ```
+
+  ```js
+  validate('Password123!', { minimum: 8, lowercase: 2, uppercase: 2, special: 2, number: 2 });
+  //=> ['minimum', 'maximum', 'lowercase', 'number']
+  ```
+
+  </details>
+
+- <details>
+  <summary>New <code>isEmail</code> function to validate email addresses.</summary>
 
   ```js
   isEmail('example@domain.com'); //=> true
@@ -18,7 +43,10 @@ All notable changes to this project will be documented in this file.
     RGX_EMAIL.test('invalid-email'); //=> false
     ```
 
-- New `cls` function for combining class names.
+  </details>
+
+- <details>
+  <summary>New <code>cls</code> function for combining class names.</summary>
 
   ```js
   cls('btn', { active: true, disabled: false }, ['extra', 'class']);
@@ -27,10 +55,12 @@ All notable changes to this project will be documented in this file.
 
   - Supports strings, numbers, arrays, and objects.
   - Filters out falsy values.
+  </details>
 
 ### Changed
 
-- Enhance `supplant` function with flexible placeholder delimiters
+- <details>
+  <summary>Enhance <code>supplant</code> function with flexible placeholder delimiters</summary>
 
   ```js
   supplant('{name} is learning {subject}', { name: 'Alice', subject: 'JavaScript' });
@@ -41,6 +71,8 @@ All notable changes to this project will be documented in this file.
   supplant('<name> loves <food.name>', ['<', '>'], { name: 'Bob', food: { name: 'pizza' } });
   //=> "Bob loves pizza"
   ```
+
+  </details>
 
 ### Fixed
 
