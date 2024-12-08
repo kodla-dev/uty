@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+## [0.2.0] - 2024-12-09
+
+### Added
+
 - <details>
   <summary>New <code>validate</code> function lets you check texts for various things, like length, case, special characters, numbers, and words.</summary>
 
@@ -92,5 +96,6 @@ All notable changes to this project will be documented in this file.
 - Functions for converting collections to various data types
 - Customizable event emitter with listener management functions
 
-[unreleased]: https://github.com/kodla-dev/uty/compare/v0.1.0...HEAD
+[unreleased]: https://github.com/kodla-dev/uty/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/kodla-dev/uty/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/kodla-dev/uty/releases/tag/v0.1.0
