@@ -119,7 +119,11 @@ export function diff(values, type, collect) {
  * @param {*} def - The default value if the key is not found.
  * @returns {*} - The value at the nested key, or the default value if not found.
  */
-export function dot(key, collect, def) {
+export function dot(key, def, collect) {
+  if (isUndefined(collect)) {
+    if (isUndefined(def) || isPrimitive(def)) return collect => dot(key, def, collect);
+    return dot(key, void 0, def);
+  }
   let p = 0;
   key = key.split ? key.split('.') : key;
   while (collect && p < length(key)) collect = collect[key[p++]];

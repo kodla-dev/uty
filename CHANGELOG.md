@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - Check objects in 'join' function argument
+- Adjust 'dot' function argument order and handling
 
 ## [0.1.0] - 2024-11-23
 

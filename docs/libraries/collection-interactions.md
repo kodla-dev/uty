@@ -125,8 +125,8 @@ const data = {
   },
 };
 dot('list.name', data); //=> 'Thomas'
-dot('list.surname', data, 'Edison'); //=> ''
-dot('list.age', data, 42); // => 42
+dot('list.surname', 'Edison', data); //=> ''
+dot('list.age', 42, data); // => 42
 dot('list.age', data); // => undefined
 ```
 
