@@ -20,7 +20,6 @@ import {
   isNil,
   isNumber,
   isObject,
-  isObjects,
   isPrimitive,
   isPromise,
   isString,
@@ -84,12 +83,10 @@ export function cls(...collect) {
     const arg = collect[i];
     if (isString(arg) || isNumber(arg)) classes.push(arg);
     if (isArray(arg)) classes.push(cls.apply(null, arg));
-    if (isObjects(arg)) {
-      if (arg.toString === Object.prototype.toString) {
-        for (const key in arg) {
-          if (hasOwn(key, arg) && arg[key]) classes.push(key);
-        }
-      } else classes.push(arg.toString());
+    if (isObject(arg)) {
+      for (const key in arg) {
+        if (hasOwn(key, arg) && arg[key]) classes.push(key);
+      }
     }
   }
   return classes.join(RAW_WHITESPACE);
